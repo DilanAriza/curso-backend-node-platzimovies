@@ -1,18 +1,13 @@
-const express = require('express');
-const app = express();
+const app = require('express')();
+const express = require('express')
 
-const { config } = require('./config/index')
+const { config } = require('./config/index');
+const moviesApi = require('./routes/movies');
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => {
-    res.send('Hola mundo desde express');
-});
-
-app.get('/json', (req, res) => {
-    res.json({
-        "hello": "world"
-    });
-})
+moviesApi(app);
 
 app.listen(config.port, function() {
     console.log(`Listening http://localhost:${config.port}`);
