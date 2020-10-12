@@ -21,6 +21,11 @@ class MoviesService {
         return updateMovieId || [];
     }
 
+    async patchMovie() {
+        const patchMovieId = await Promise.resolve(moviesMock[0].id);
+        return patchMovieId || [];
+    }
+
     async deleteMovie() {
         const deleteMovieID = await Promise.resolve(moviesMock[0].id);
         return deleteMovieID || [];
