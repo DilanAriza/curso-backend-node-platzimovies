@@ -79,26 +79,26 @@ function moviesApi(app) {
     })
 
 
-    router.patch("/:movieId", async function(req, res, next) {
-        const { body: movie } = req;
-        const { movieId } = req.params;
+    // router.patch("/:movieId", async function(req, res, next) {
+    //     const { body: movie } = req;
+    //     const { movieId } = req.params;
 
-        try {
-            const updatedMovieId = await moviesService.patchMovie({
-                movie,
-                movieId
-            });
+    //     try {
+    //         const updatedMovieId = await moviesService.patchMovie({
+    //             movie,
+    //             movieId
+    //         });
 
-            res.status(200).json({
-                data: updatedMovieId,
-                message: 'Movie patched'
-            });
+    //         res.status(200).json({
+    //             data: updatedMovieId,
+    //             message: 'Movie patched'
+    //         });
 
 
-        } catch (e) {
-            next(e);
-        }
-    })
+    //     } catch (e) {
+    //         next(e);
+    //     }
+    // })
 
     router.delete("/:movieId", async function(req, res, next) {
         const { movieId } = req.params;
