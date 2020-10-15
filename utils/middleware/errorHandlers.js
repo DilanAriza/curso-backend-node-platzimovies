@@ -1,8 +1,9 @@
 const { config } = require('../../config/index');
+const Boom = require('@hapi/boom');
 
 function withErrorStack(error, stack) {
     if (config.dev) {
-        return { error, stack }
+        return {...error, stack }
     }
 
     return error
@@ -11,15 +12,26 @@ function withErrorStack(error, stack) {
 function logErrors(err, req, res, next) {
     console.log(err);
     next(err)
+}
 
+function wrapError(err, req, res, next) {
+    if (!err.isBoom) {
+        next(Boom.badImplementation(err))
+    }
+    next(err);
 }
 
 function errorHadler(err, req, res, next) {
-    res.status(err.status || 500);
-    res.json(withErrorStack(err.message, err.stack));
+    const {
+        output: { statusCode, payload }
+    } = err;
+
+    res.status(statusCode);
+    res.json(withErrorStack(payload, err.stack));
 }
 
 module.exports = {
     logErrors,
-    errorHadler
+    errorHadler,
+    wrapError,
 }
