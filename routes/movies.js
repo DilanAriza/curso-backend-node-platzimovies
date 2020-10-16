@@ -22,7 +22,7 @@ function moviesApi(app) {
 
             res.status(200).json({
                 data: movies,
-                message: 'Movies listed'
+                message: 'movies listed'
             });
 
 
@@ -42,7 +42,7 @@ function moviesApi(app) {
 
                 res.status(200).json({
                     data: movies,
-                    message: 'Movie retrieved'
+                    message: 'movie retrieved'
                 });
 
 
@@ -62,7 +62,7 @@ function moviesApi(app) {
 
                 res.status(201).json({
                     data: createMovieId,
-                    message: 'Movie created'
+                    message: 'movie created'
                 });
 
 
@@ -88,7 +88,7 @@ function moviesApi(app) {
 
                 res.status(200).json({
                     data: updatedMovieId,
-                    message: 'Movie updated'
+                    message: 'movie updated'
                 });
 
 
@@ -131,7 +131,7 @@ function moviesApi(app) {
 
                 res.status(200).json({
                     data: deleteMovieId,
-                    message: 'Movie Deleted'
+                    message: 'movie deleted'
                 });
 
 
