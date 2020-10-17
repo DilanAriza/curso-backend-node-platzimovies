@@ -1,0 +1,2 @@
+If your secret has spaces or starts with '-', make sure to terminate command options with double dash and wrap it in quotes. Example: 
+  $ `vercel secret add -- "${args[0]}"` 
